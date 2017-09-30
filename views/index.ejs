@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><% title %></title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/semantic/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/mystyles.css">
+  </head>
+    <body>
+    	<div class="ui fixed inverted menu">
+    		<a href="/" class="header item">Marque</a>
+		</div>
+		<div class="ui main container">
+			<% if (locals.error) { %>
+			<div class="ui negative message">
+				<%= error %>
+			</div>
+			<% } %>
+			<h3 style="text-align: center"> Connexion </h3>
+				<br> 
+			<form action="/" method="post" class="ui small form">
+				<label for="email">Email</label>
+				<input placeholder="" id="email" type="text" name="email">
+				<label for="password">Password</label>
+				<input placeholder="" id="password" type="password" name="password">
+			  	<button type="submit" class="ui green submit button">Log in
+			  	</button>
+			</form> 
+			<form action="/register" class="ui small form">
+			  	<button class="ui teal submit button">Register
+			  	</button>
+			</form> 
+	  	</div>
+  </body>
+</html>
+
