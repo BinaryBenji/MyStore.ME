@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcryptjs');
 let bodyParser = require('body-parser');
 
 
@@ -34,6 +35,15 @@ router.post('/', function(req, res) {
 	}
 	else {
 		console.log(req.body);
+		var hashed_pass = bcrypt.hashSync(req.body.password);
+		console.log(hashed_pass);
+		codb.query('INSERT INTO clients SET nom = ?, prenom = ?, email = ?, password = ?', 
+			[req.body.nom, req.body.prenom, req.body.email, hashed_pass]), (err, result) =>
+		{
+			if (err){ 
+                res.redirect('/')
+			}
+		}
 		res.render('register', { title: 'Se connecter' });
 	}
 });

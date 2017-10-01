@@ -9,11 +9,13 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var app = express();
 var mysql = require('mysql');
+var bcrypt = require('bcryptjs');
 
-var codb = mysql.createConnection({
+codb = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root"
+  password: "root",
+  database:"mystore"
 });
 
 codb.connect(function(err) {
